@@ -304,6 +304,11 @@
           var replacements = [];
           var string = this.settings.progressText.replace(this.filenameTag, id);
           var lines = this.editor.getValue().split('\n');
+
+        //console.log(file);
+        if ( filename.substr(filename.length - 3) == "pdf"){
+            this.settings.urlText = "[pdf]({filename})";
+        }
         var newValue = this.settings.urlText.replace(this.filenameTag, filename);
           for(var i = 0; i < lines.length; i++) {
             var ch = lines[i].indexOf(string);
