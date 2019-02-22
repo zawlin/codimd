@@ -309,6 +309,11 @@
         if ( filename.substr(filename.length - 3) == "pdf"){
             this.settings.urlText = "[pdf]({filename})";
         }
+        if ( filename.substr(filename.length - 4) == "pptx"){
+            this.settings.urlText = "[pptx]({filename})";
+        }
+
+
         var newValue = this.settings.urlText.replace(this.filenameTag, filename);
           for(var i = 0; i < lines.length; i++) {
             var ch = lines[i].indexOf(string);
