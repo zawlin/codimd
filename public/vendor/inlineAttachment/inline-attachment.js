@@ -305,14 +305,7 @@
           var string = this.settings.progressText.replace(this.filenameTag, id);
           var lines = this.editor.getValue().split('\n');
 
-        //console.log(file);
-        if ( filename.substr(filename.length - 3) == "pdf"){
-            this.settings.urlText = "[pdf]({filename})";
-        }
-        if ( filename.substr(filename.length - 4) == "pptx"){
-            this.settings.urlText = "[pptx]({filename})";
-        }
-
+        this.settings.urlText ="["+this.origFile.name+ "]({filename})";
 
         var newValue = this.settings.urlText.replace(this.filenameTag, filename);
           for(var i = 0; i < lines.length; i++) {
@@ -355,6 +348,7 @@
    * @return {Void}
    */
   inlineAttachment.prototype.onFileInserted = function(file, id) {
+    this.origFile =file; 
     if (this.settings.onFileReceived.call(this, file) !== false) {
       this.lastValue = this.settings.progressText.replace(this.filenameTag, id);
       this.editor.insertValue(this.lastValue + "\n");
